@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 
-const OrderOptionDate = () => {
-  const [startDate, setStartDate] = useState(new Date());
+const OrderOptionDate = ({currentValue, setOptionValue}) => {
   return (
-    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-
+    <DatePicker selected={currentValue}
+    onChange={(date) => setOptionValue(date)}
+    dateFormat = 'dd/MM/yyyy'
+    />
   );
 };
 
