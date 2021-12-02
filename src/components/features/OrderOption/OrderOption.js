@@ -1,9 +1,10 @@
-import React from "react";
-import styles from "./OrderOption.module.scss";
-import OrderOptionCheckboxes from "./OrderOptionCheckboxes";
-import OrderOptionDropdown from "./OrderOptionDropdown";
-import OrderoptionIcons from "./OrderOptionIcons";
-import OrderOptionNumber from "./OrderOptionNumber";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './OrderOption.module.scss';
+import OrderOptionCheckboxes from './OrderOptionCheckboxes';
+import OrderOptionDropdown from './OrderOptionDropdown';
+import OrderoptionIcons from './OrderOptionIcons';
+import OrderOptionNumber from './OrderOptionNumber';
 import OrderOptionDate from './OrderOptionDate';
 import OrderOptionText from './OrderOptionText';
 
@@ -30,6 +31,13 @@ const OrderOption = ({name, type, id, setOrderOption, ...otherProps}) => {
       </div>
     );
   }
+};
+
+OrderOption.propTypes = {
+  name: PropTypes.string,
+  type: PropTypes.string,
+  id: PropTypes.string,
+  setOrderOption: PropTypes.func,
 };
 
 export default OrderOption;

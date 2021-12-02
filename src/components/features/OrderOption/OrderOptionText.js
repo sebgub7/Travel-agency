@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './OrderOption.module.scss'
+import styles from './OrderOption.module.scss';
 
 const OrderOptionText = ({ setOptionValue, currentValue }) => (
   <div>
@@ -15,6 +15,7 @@ const OrderOptionText = ({ setOptionValue, currentValue }) => (
 
 OrderOptionText.propTypes ={
   setOptionValue: PropTypes.func,
-}
+  currentValue: PropTypes.string,
+};
 
 export default OrderOptionText;
