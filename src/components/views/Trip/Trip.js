@@ -13,8 +13,17 @@ import ListItem from '../../common/ListItem/ListItem';
 import OrderForm from '../../features/OrderForm/OrderFormContainer';
 import styles from './Trip.module.scss';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import { promoPrice } from '../../../utils/promoPrice';
 
 const Trip = ({ error, name, image, cost, days, description, country, intro }) => {
+  const today = new Date();
+  let price = cost;
+  let isPromo = false;
+
+  if ( (today.getUTCHours() >= 12) || (today.getUTCHours <= 13 && today.getUTCMinutes() <= 0) ) {
+    price = promoPrice(cost, 20);
+    isPromo = true;
+  }
   console.log('cost', cost);
   if (error) return <NotFound />;
   else return (
@@ -34,7 +43,8 @@ const Trip = ({ error, name, image, cost, days, description, country, intro }) =
               </div>
               <List variant='light'>
                 <ListItem title={`<strong>Duration:</strong> ${days} days`} icon='calendar-alt' />
-                <ListItem title={`<strong>Price:</strong> from ${cost}`} icon='money-bill-wave' />
+                { isPromo && <div className={styles.promoPrice}>Promo Price is enabled</div> }
+                <ListItem title={`<strong>Price:</strong> from ${price}`} icon='money-bill-wave' />
               </List>
             </Col>
           </Row>
